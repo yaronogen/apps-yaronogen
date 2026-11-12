@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { StatusBadge, StoreLinks } from "@/components/product/Availability";
 import { Faq } from "@/components/product/Faq";
+import { HelpAndLegal } from "@/components/product/HelpAndLegal";
 import { absoluteUrl } from "@/lib/site";
 import { tally } from "./config";
 import {
@@ -341,6 +342,18 @@ export function TallyLanding() {
             </p>
           </div>
           <Faq items={faq} />
+        </Container>
+      </section>
+
+      {/* Help and legal: the same documents as in the app's Settings */}
+      <section id="legal" aria-labelledby="legal-title" className="scroll-mt-28 border-t border-night-border/60 py-20 sm:py-24">
+        <Container>
+          <SectionHeading id="legal-title" eyebrow="Help and legal" title="Policies and support.">
+            The same documents you find in the app under Settings, word for word.
+          </SectionHeading>
+          <div className="mt-10">
+            <HelpAndLegal product={tally} />
+          </div>
         </Container>
       </section>
     </>

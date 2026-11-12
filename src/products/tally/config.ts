@@ -36,6 +36,7 @@ export const tally: ProductConfig = {
     { label: "Samples", href: "/tally/#samples" },
     { label: "Pricing", href: "/tally/#pricing" },
     { label: "FAQ", href: "/tally/#faq" },
+    { label: "Legal", href: "/tally/#legal" },
   ],
   platforms: ["iPhone", "iPad", "Android phones and tablets"],
   // Fill in once Tally is public; the download buttons appear automatically.

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { ProductConfig } from "@/products/types";
 import { ResponsiveImage } from "../ResponsiveImage";
 import { StatusBadge } from "./Availability";
+import { helpAndLegalLinks } from "./HelpAndLegal";
 
 const list = (items: string[]) => items.join(", ").replace(/, ([^,]*)$/, " and $1");
 
@@ -61,6 +62,19 @@ export function ProductCard({ product, wide }: { product: ProductConfig; wide: b
           >
             Explore {product.name} <ArrowRight aria-hidden className="size-4" />
           </Link>
+          <nav aria-label={`${product.name} help and legal`} className="mt-6">
+            <ul className={`flex flex-wrap gap-x-4 gap-y-2 text-sm ${night ? "text-lilac" : "text-muted"}`}>
+              {helpAndLegalLinks(product)
+                .filter((l) => !l.href.endsWith("/delete-account/"))
+                .map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className={`underline underline-offset-4 ${night ? "hover:text-gold" : "hover:text-ink"}`}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </nav>
         </div>
 
         <div className={`relative ${wide ? "pb-8 sm:pr-16 lg:pb-10" : "pb-8 sm:pr-16"}`}>

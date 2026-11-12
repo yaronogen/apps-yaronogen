@@ -161,6 +161,22 @@ test("homepage is general and lets you choose every app", async ({ page }) => {
   await expect(page.getByRole("list", { name: "Tally screenshots" })).toBeVisible();
 });
 
+test("Tally's help and legal documents are linked with the app's names", async ({ page }) => {
+  const docs = [
+    ["Privacy Policy", "/tally/privacy/"],
+    ["Terms of Use", "/tally/terms/"],
+    ["Help and support", "/tally/support/"],
+    ["Legal notice", "/tally/imprint/"],
+  ] as const;
+  await page.goto("/tally/");
+  const section = page.locator("#legal");
+  for (const [label, href] of docs) await expect(section.getByRole("link", { name: label })).toHaveAttribute("href", href);
+  await expect(section.getByRole("link", { name: "Delete your account" })).toHaveAttribute("href", "/tally/delete-account/");
+  await page.goto("/");
+  const card = page.getByRole("navigation", { name: "Tally help and legal" });
+  for (const [label, href] of docs) await expect(card.getByRole("link", { name: label })).toHaveAttribute("href", href);
+});
+
 test("skip link is the first thing keyboard users reach", async ({ page }) => {
   await page.goto("/tally/");
   await page.keyboard.press("Tab");
