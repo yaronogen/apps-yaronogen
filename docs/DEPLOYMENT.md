@@ -18,9 +18,9 @@
 
 ### Step by step (do these yourself, or ask me to do them, when you're ready)
 
-1. **Create the repository** on GitHub, e.g. `yaronogen/apps-yaronogen` (public), and push this project:
+1. **Create the repository** on GitHub, `yaronogen/apps-yaronogen` (public), and push this project:
    ```sh
-   git remote add origin https://github.com/<you>/apps-yaronogen.git
+   git remote add origin https://github.com/yaronogen/apps-yaronogen.git
    git push -u origin main
    ```
    The first workflow run checks everything, but the deploy job will fail until step 2 is done.
@@ -31,13 +31,13 @@
 
    | Type | Host name | Points to | TTL |
    |---|---|---|---|
-   | CNAME | `apps` | `<your-github-username>.github.io` | 1 hour |
+   | CNAME | `apps` | `yaronogen.github.io` | 1 hour |
 
    Don't change or delete any existing record.
 5. **Wait for DNS** (usually minutes, up to 24 h). GitHub then issues the certificate. When it's ready, tick **Enforce HTTPS** in Settings → Pages.
 6. Re-run the workflow (Actions → Site → *Run workflow*), then open https://apps.yaronogen.com.
 
-Check the DNS record with: `nslookup apps.yaronogen.com` (it should resolve to `<you>.github.io`).
+Check the DNS record with: `nslookup apps.yaronogen.com` (it should resolve to `yaronogen.github.io`).
 
 ### Updating the site
 
