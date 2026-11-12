@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/*
+ * Two visual layers:
+ *  - the studio (Apps by Yaron Ogen): warm paper and ink, light and dark following the system
+ *  - each product keeps its own identity; Tally is always the "night sky" from the app
+ *    (apps/mobile/src/ui/theme.ts in the Tally repo)
+ */
+:root {
+  --paper: #faf8f5;
+  --surface: #ffffff;
+  --surface-2: #f2eee8;
+  --ink: #17161b;
+  --ink-2: #3a3842;
+  --muted: #5d5965;
+  --line: #e4ded5;
+  --focus: #3b3fb6;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0d0e12;
+    --surface: #15161c;
+    --surface-2: #1c1d25;
+    --ink: #f3f1ec;
+    --ink-2: #d6d3cc;
+    --muted: #a7a3ae;
+    --line: #2a2b34;
+    --focus: #a9abff;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-tally: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+  --font-story: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-hebrew: var(--font-rubik), var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Tally's night palette (fixed: Tally is always dark). */
+@theme {
+  --color-night-sky-top: #1b2552;
+  --color-night-sky-bottom: #0a1026;
+  --color-night: #0e1533;
+  --color-night-surface: #161f45;
+  --color-night-raised: #212c5c;
+  --color-night-border: #2b376b;
+  --color-cream: #f6efe1;
+  --color-lilac: #afaacb;
+  --color-gold: #ebc47c;
+  --color-gold-deep: #c8964a;
+  --color-gold-ink: #1a1f3d;
+  --color-star: #fff6da;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.theme-night :focus-visible {
+  outline-color: var(--color-gold);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--focus) 25%, transparent);
+}
+
+/* A quiet star field for Tally's sky: pure CSS, no images. */
+.starfield {
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgb(255 246 218 / 0.9), transparent 60%),
+    radial-gradient(1px 1px at 28% 72%, rgb(255 246 218 / 0.7), transparent 60%),
+    radial-gradient(1.5px 1.5px at 44% 34%, rgb(255 246 218 / 0.8), transparent 60%),
+    radial-gradient(1px 1px at 58% 12%, rgb(255 246 218 / 0.6), transparent 60%),
+    radial-gradient(2px 2px at 71% 58%, rgb(255 246 218 / 0.75), transparent 60%),
+    radial-gradient(1px 1px at 83% 26%, rgb(255 246 218 / 0.7), transparent 60%),
+    radial-gradient(1.5px 1.5px at 92% 80%, rgb(255 246 218 / 0.6), transparent 60%),
+    radial-gradient(1px 1px at 6% 88%, rgb(255 246 218 / 0.6), transparent 60%),
+    radial-gradient(1px 1px at 36% 92%, rgb(255 246 218 / 0.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 64% 84%, rgb(255 246 218 / 0.55), transparent 60%);
+  background-size: 640px 520px;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.twinkle {
+  animation: twinkle 6s ease-in-out infinite;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .twinkle, .rise { animation: none; }
+}
+
+/* Long-form text on legal pages. */
+.prose-legal p {
+  margin-top: 0.75rem;
+  line-height: 1.7;
+}
+
+.prose-legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
