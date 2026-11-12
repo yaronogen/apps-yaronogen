@@ -11,6 +11,12 @@ export function Wordmark({ className = "" }: { className?: string }) {
   );
 }
 
+const NAV = [
+  { href: "/#apps", label: "Apps" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact", wide: true },
+];
+
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-paper/80 backdrop-blur-md supports-[backdrop-filter]:bg-paper/70">
@@ -21,21 +27,13 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Main">
           <ul className="flex items-center gap-1 text-sm font-medium sm:gap-2">
-            <li>
-              <Link href="/tally/" className="rounded-full px-3 py-2 text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink">
-                Tally
-              </Link>
-            </li>
-            <li>
-              <Link href="/#about" className="rounded-full px-3 py-2 text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink">
-                About
-              </Link>
-            </li>
-            <li className="hidden sm:block">
-              <Link href="/tally/support/" className="rounded-full px-3 py-2 text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink">
-                Support
-              </Link>
-            </li>
+            {NAV.map((item) => (
+              <li key={item.href} className={item.wide ? "hidden sm:block" : undefined}>
+                <Link href={item.href} className="rounded-full px-3 py-2 text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </Container>

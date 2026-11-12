@@ -10,6 +10,8 @@ export interface ProductConfig {
   name: string;
   /** One line under the name, e.g. the app's own tagline. */
   tagline: string;
+  /** What kind of app it is, in a few words (homepage app list), e.g. "Bedtime stories for children". */
+  category: string;
   /** Two or three sentences: the homepage showcase and meta descriptions. */
   summary: string;
   status: ProductStatus;

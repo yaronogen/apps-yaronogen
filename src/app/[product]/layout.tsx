@@ -25,7 +25,7 @@ export default async function ProductLayout({ children, params }: { children: Re
     <div className={night ? "theme-night min-h-dvh bg-night text-cream [color-scheme:dark]" : "min-h-dvh"}>
       <ProductHeader product={entry.config} />
       <main id="main">{children}</main>
-      <SiteFooter tone={night ? "night" : "studio"} />
+      <SiteFooter product={entry.config} />
     </div>
   );
 }

@@ -147,6 +147,20 @@ test.describe("Tally landing", () => {
   });
 });
 
+test("homepage is general and lets you choose every app", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("h1")).toContainText("Thoughtful software");
+  const index = page.getByRole("navigation", { name: "The apps" });
+  const apps = page.locator("#apps");
+  for (const slug of ["tally"]) {
+    await expect(index.locator(`a[href="/${slug}/"]`)).toHaveCount(1);
+    await expect(apps.locator(`a[href="/${slug}/"]`)).toHaveCount(1);
+  }
+  await apps.getByRole("link", { name: "Explore Tally" }).click();
+  await expect(page).toHaveURL(/\/tally\/$/);
+  await expect(page.getByRole("list", { name: "Tally screenshots" })).toBeVisible();
+});
+
 test("skip link is the first thing keyboard users reach", async ({ page }) => {
   await page.goto("/tally/");
   await page.keyboard.press("Tab");

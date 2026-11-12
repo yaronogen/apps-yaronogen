@@ -18,8 +18,8 @@ export default function NotFound() {
             <Link href="/" className="inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm font-semibold text-paper">
               Go to the homepage
             </Link>
-            <Link href="/tally/" className="inline-flex h-12 items-center rounded-full px-6 text-sm font-semibold ring-1 ring-line">
-              Tally
+            <Link href="/#apps" className="inline-flex h-12 items-center rounded-full px-6 text-sm font-semibold ring-1 ring-line">
+              See all apps
             </Link>
           </div>
         </Container>

@@ -22,6 +22,7 @@ export const tally: ProductConfig = {
   slug: "tally",
   name: c.brand.name,
   tagline: c.brand.tagline,
+  category: "Personalized bedtime stories",
   summary:
     "Tally writes a new bedtime story for your child, in their language and for their age, with a picture for every story. Choose the themes and the ending, or let your child help decide what happens.",
   status: {

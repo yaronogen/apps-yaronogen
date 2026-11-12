@@ -11,8 +11,8 @@ export function ProductHeader({ product }: { product: ProductConfig }) {
       <SkipLink className={night ? "focus:bg-gold focus:text-gold-ink" : "focus:bg-ink focus:text-paper"} />
       <div className={`border-b text-xs ${night ? "border-night-border/60 text-lilac" : "border-line/60 text-muted"}`}>
         <Container className="flex h-8 items-center">
-          <Link href="/" className={`inline-flex items-center gap-1.5 rounded ${night ? "hover:text-cream" : "hover:text-ink"}`}>
-            <ArrowLeft aria-hidden className="size-3.5" /> Apps by Yaron Ogen
+          <Link href="/#apps" className={`inline-flex items-center gap-1.5 rounded ${night ? "hover:text-cream" : "hover:text-ink"}`}>
+            <ArrowLeft aria-hidden className="size-3.5" /> All apps by Yaron Ogen
           </Link>
         </Container>
       </div>
